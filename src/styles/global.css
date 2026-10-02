@@ -1,6 +1,6 @@
-:root { --canvas: #f7f7f2; --surface: #eeefe8; --ink: #202321; --muted: #62685f; --soft: #737c70; --accent: #116b5d; --border: #d5d9cf; --header: #f7f7f2f0; color-scheme: light; font-family: 'Manrope Variable', Manrope, sans-serif; }
-:root[data-theme='dark'] { --canvas: #151918; --surface: #202623; --ink: #f2f3ee; --muted: #b1b9b0; --soft: #a2ada3; --accent: #8ddfc5; --border: #38433b; --header: #151918f0; color-scheme: dark; }
-@media (prefers-color-scheme: dark) { :root:not([data-theme]) { --canvas: #151918; --surface: #202623; --ink: #f2f3ee; --muted: #b1b9b0; --soft: #a2ada3; --accent: #8ddfc5; --border: #38433b; --header: #151918f0; color-scheme: dark; } }
+:root { --canvas: #f8f5ef; --surface: #eee8df; --ink: #25221f; --muted: #686158; --soft: #7a7166; --accent: #a44924; --border: #d9d0c4; --header: #f8f5eff0; color-scheme: light; font-family: 'Manrope Variable', Manrope, sans-serif; }
+:root[data-theme='dark'] { --canvas: #1c1b19; --surface: #272420; --ink: #f5f0e8; --muted: #bab0a5; --soft: #a89b8b; --accent: #e4a57a; --border: #494039; --header: #1c1b19f0; color-scheme: dark; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme]) { --canvas: #1c1b19; --surface: #272420; --ink: #f5f0e8; --muted: #bab0a5; --soft: #a89b8b; --accent: #e4a57a; --border: #494039; --header: #1c1b19f0; color-scheme: dark; } }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 100px; }
 body { margin: 0; background: var(--canvas); color: var(--ink); -webkit-font-smoothing: antialiased; font-size: 16px; line-height: 1.65; }
