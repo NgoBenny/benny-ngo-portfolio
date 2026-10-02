@@ -37,11 +37,11 @@ Lighthouse can use installed Edge with `CHROME_PATH` set to the Edge executable:
 npx lighthouse http://127.0.0.1:4321 --only-categories=performance,accessibility,best-practices,seo --chrome-flags="--headless" --output=json --output-path=output/verification/lighthouse.json
 ```
 
-## Publish later
+## Hosting
 
-Deploy `dist/` to Vercel Hobby: framework Astro, install `npm ci`, build `npm run build`, output `dist`. There is no runtime adapter or secret requirement. Use a free generated domain; enable no paid add-ons. Configure `SITE_URL` to the final HTTPS origin and rebuild. Canonical links, social-image URLs, sitemap and robots then use that origin. Before an origin is configured, local output deliberately omits absolute canonical/social URLs and generates an empty sitemap.
+Source: https://github.com/NgoBenny/benny-ngo-portfolio. Deploy `dist/` to Vercel Hobby: framework Astro, install `npm ci`, build `npm run build`, output `dist`. There is no runtime adapter or secret requirement. Use a free generated domain; enable no paid add-ons. The build uses Vercel's production-domain environment variable for canonical links, social-image URLs, sitemap and robots. Set `SITE_URL` explicitly if the canonical domain changes. Before an origin is configured, local output omits absolute canonical/social URLs and generates an empty sitemap.
 
-For GitHub Pages set `SITE_URL=https://ngobenny.github.io` and `BASE_PATH=/repository-name/` for a project site, or `/` for the user site. Build with the official Astro Pages action. Internal links/assets use the configured base. No hosting has been connected by this implementation.
+For GitHub Pages set `SITE_URL=https://ngobenny.github.io` and `BASE_PATH=/benny-ngo-portfolio/` for this project site, or `/` for a user site. Build with the official Astro Pages action. Internal links/assets use the configured base.
 
 Verify all project routes, resume, contact links, metadata and asset URLs on the hosted domain. Git history and Vercel deployment history provide rollback. Update the resume and claims when their source evidence changes. No recurring automation or analytics is configured.
 
