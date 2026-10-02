@@ -1,5 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import portrait from '../assets/benny-ngo.png';
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import Arrow from '../components/Arrow.astro';
@@ -22,7 +24,7 @@ const base = import.meta.env.BASE_URL;
     <div class="project-grid">{projects.slice(1).map(project => <ProjectCard project={project} />)}</div>
   </section>
   <section id="about" class="about-section container" aria-labelledby="about-title">
-    <div class="about-intro"><div><p class="eyebrow mono">02 / A LITTLE ABOUT ME</p><h2 id="about-title">Curious by nature.<br/><span class="soft">Engineer by practice.</span></h2><p class="personal-note"><span aria-hidden="true">✳</span> Eagle Scout. Teacher. Always a student.</p></div><div class="about-prose">{profile.about.map(paragraph => <p>{paragraph}</p>)}</div></div>
+    <div class="about-intro"><div><p class="eyebrow mono">02 / A LITTLE ABOUT ME</p><h2 id="about-title">Curious by nature.<br/><span class="soft">Engineer by practice.</span></h2><p class="personal-note"><span aria-hidden="true">✳</span> Eagle Scout. Teacher. Always a student.</p></div><div class="about-prose"><Image class="about-portrait" src={portrait} alt="Benny Ngo" widths={[160, 320, 480]} sizes="160px" format="webp" quality={90} loading="lazy" />{profile.about.map(paragraph => <p>{paragraph}</p>)}</div></div>
     <div class="background-grid"><div><h3 class="eyebrow mono">EDUCATION</h3>{profile.education.map(item => <article class="background-item"><span class="date mono">{item.date}</span><h4>{item.institution}</h4><p>{item.qualification}</p></article>)}</div><div><h3 class="eyebrow mono">EXPERIENCE</h3>{profile.experience.map(item => <article class="background-item"><span class="date mono">{item.date}</span><h4>{item.role}</h4><p class="organization">{item.organization}</p><p>{item.description}</p></article>)}</div></div>
   </section>
   <section id="skills" class="skills-section container" aria-labelledby="skills-title"><div class="section-heading"><div><p class="eyebrow mono">03 / MY TOOLKIT</p><h2 id="skills-title">The tools behind the work<span class="accent">.</span></h2></div><p>Chosen for the problem.<br/>Learned through building.</p></div><div class="skills-grid">{profile.skills.map((group, index) => <article><span class="skill-number mono">0{index + 1}</span><h3>{group.title}</h3><ul>{group.items.map(item => <li>{item}</li>)}</ul></article>)}</div></section>

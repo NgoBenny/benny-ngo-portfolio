@@ -94,6 +94,8 @@ h2 { font-size: clamp(29px, 3vw, 40px); line-height: 1.2; letter-spacing: -.045e
 .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 40px; }
 .about-section { border-top: 1px solid var(--border); padding-block: 80px 92px; }
 .about-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; }
+.about-portrait { float: right; width: 160px; height: 200px; object-fit: cover; border: 1px solid var(--border); border-radius: 8px; margin: 0 0 16px 24px; }
+@media (max-width: 760px) { .about-portrait { float: none; display: block; margin: 0 0 24px; } }
 .about-prose p { color: var(--muted); font-size: 14px; line-height: 1.9; }.about-prose p + p { margin-top: 20px; }
 .personal-note { margin-top: 30px; font-size: 11px; color: var(--muted); display: flex; align-items: center; gap: 10px; }.personal-note span { color: var(--accent); font-size: 24px; }
 .background-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; margin-top: 58px; }
