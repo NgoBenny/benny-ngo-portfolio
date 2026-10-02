@@ -2,6 +2,8 @@
 
 Static Astro, TypeScript and CSS portfolio with three project case studies, system-aware light/dark themes, accessible mobile navigation and an unchanged resume PDF. No backend, form or live ML service is required.
 
+Live site: https://benny-ngo-portfolio.vercel.app/ · Source: https://github.com/NgoBenny/benny-ngo-portfolio
+
 ## Local commands
 
 Use Node 22.23.3 (or compatible Node 24 LTS), then:
@@ -40,6 +42,8 @@ npx lighthouse http://127.0.0.1:4321 --only-categories=performance,accessibility
 ## Hosting
 
 Source: https://github.com/NgoBenny/benny-ngo-portfolio. Deploy `dist/` to Vercel Hobby: framework Astro, install `npm ci`, build `npm run build`, output `dist`. There is no runtime adapter or secret requirement. Use a free generated domain; enable no paid add-ons. The build uses Vercel's production-domain environment variable for canonical links, social-image URLs, sitemap and robots. Set `SITE_URL` explicitly if the canonical domain changes. Before an origin is configured, local output omits absolute canonical/social URLs and generates an empty sitemap.
+
+The Vercel project is connected to this repository's `main` branch. Pushing to `main` automatically creates a production deployment; other branches receive preview deployments. Production access is public. No paid services, forms or analytics are enabled.
 
 For GitHub Pages set `SITE_URL=https://ngobenny.github.io` and `BASE_PATH=/benny-ngo-portfolio/` for this project site, or `/` for a user site. Build with the official Astro Pages action. Internal links/assets use the configured base.
 
