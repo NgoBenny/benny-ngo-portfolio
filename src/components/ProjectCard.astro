@@ -10,7 +10,7 @@ const href = `${import.meta.env.BASE_URL}projects/${project.id}/`;
 <article class:list={['project-card', { 'project-featured': featured }]}>
   <a class="project-image" href={href} tabindex="-1" aria-hidden="true">
     <div class="image-toolbar"><span class="window-dots"><i></i><i></i><i></i></span><span>{data.subtitle}</span><span class="toolbar-status">PROJECT PREVIEW</span></div>
-    <Image src={data.thumbnail} alt={data.thumbnailAlt} widths={featured ? [480, 760, 1160] : [360, 580, 760]} sizes={featured ? '(max-width: 760px) 100vw, 1160px' : '(max-width: 760px) 100vw, 560px'} format="webp" quality={85} loading="lazy" />
+    <Image src={data.thumbnail} alt={data.thumbnailAlt} widths={featured ? [480, 760, 1160] : [360, 580, 760, 1160]} sizes={featured ? '(max-width: 760px) calc(100vw - 72px), (max-width: 1050px) 50vw, 567px' : '(max-width: 760px) calc(100vw - 68px), 532px'} format="webp" quality={90} loading="lazy" />
   </a>
   <div class="project-copy">
     <div class="project-eyebrow mono"><span>{String(data.order).padStart(2, '0')} / {data.category}</span><span>{data.sourceVisibility === 'private' ? 'Source private' : 'Open source'}</span></div>

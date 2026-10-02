@@ -8,3 +8,5 @@ dist/
 output/
 .research/
 *.log
+*.pem
+*.key

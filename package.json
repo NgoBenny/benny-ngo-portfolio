@@ -11,7 +11,8 @@
     "check": "astro check",
     "build": "astro check && astro build",
     "preview": "astro preview --host 127.0.0.1",
-    "test": "node tests/smoke.mjs"
+    "test": "node tests/smoke.mjs",
+    "test:visitor": "node tests/visitor.mjs"
   },
   "dependencies": {
     "@fontsource-variable/manrope": "5.3.0",

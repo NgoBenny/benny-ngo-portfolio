@@ -31,6 +31,8 @@ Private projects use `sourceVisibility: private` and cannot include `repositoryU
 
 Build and start the preview first, then run `npm test` in another terminal. The smoke suite uses Node assertions, Playwright and axe. It tests responsive overflow, keyboard navigation, mobile disclosure, themes, blocked storage, reduced motion, JavaScript-disabled content, links/routes and private-source rules. It saves desktop/mobile/light/dark screenshots under ignored `output/verification/`.
 
+Run `npm run test:visitor` for adversarial visitor flows and failure cases. This suite can also target the deployed portfolio with `PORTFOLIO_URL=https://benny-ngo-portfolio.vercel.app/`. See [SECURITY_REVIEW.md](SECURITY_REVIEW.md) for the launch checklist, security scope and testing limits.
+
 On Windows it uses installed Microsoft Edge. Elsewhere run `npx playwright install chromium` once. `PLAYWRIGHT_CHANNEL` can select an installed supported browser. Local-only URL override: `PORTFOLIO_URL=http://127.0.0.1:4321`.
 
 Lighthouse can use installed Edge with `CHROME_PATH` set to the Edge executable:
