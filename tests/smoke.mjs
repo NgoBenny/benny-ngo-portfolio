@@ -7,7 +7,7 @@ import AxeBuilder from '@axe-core/playwright';
 const base = process.env.PORTFOLIO_URL || 'http://127.0.0.1:4321';
 const origin = new URL(base);
 assert.ok(['127.0.0.1', 'localhost'].includes(origin.hostname), 'Smoke checks only target the local portfolio.');
-const routes = ['projects/nba-win-probability/', 'projects/reddit-clone/', 'projects/ufc-win-predictor/'];
+const routes = ['projects/nba-win-probability/', 'projects/common/', 'projects/ufc-win-predictor/'];
 const output = 'output/verification';
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: process.env.PLAYWRIGHT_CHANNEL || (process.platform === 'win32' ? 'msedge' : undefined) });
@@ -70,7 +70,7 @@ try {
     await page.getByRole('heading', { level: 1 }).waitFor();
     await noOverflow(page);
     await audit(page, route);
-    if (!route.includes('reddit')) {
+    if (!route.includes('common')) {
       assert.ok(await page.getByText('Source private', { exact: true }).count());
       assert.equal(await page.getByRole('link', { name: 'View source' }).count(), 0);
     }

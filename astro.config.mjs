@@ -6,6 +6,7 @@ export default defineConfig({
   ...(site ? { site } : {}),
   base: process.env.BASE_PATH || '/',
   output: 'static',
+  redirects: { '/projects/reddit-clone/': '/projects/common/' },
   markdown: { syntaxHighlight: false },
   security: { csp: { directives: ["default-src 'self'", "img-src 'self' data:", "font-src 'self'", "connect-src 'self'", "object-src 'none'", "base-uri 'self'", "form-action 'none'"] } },
   trailingSlash: 'always',

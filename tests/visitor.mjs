@@ -42,7 +42,7 @@ try {
   assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
   checks.push('Rapid theme toggles and corrupt saved preference remain usable');
   await page.getByRole('link', { name: 'Live NBA Win Probability' }).click();
-  for (const title of ['Reddit Clone 2.0', 'UFC Win Predictor', 'Live NBA Win Probability']) {
+  for (const title of ['Common', 'UFC Win Predictor', 'Live NBA Win Probability']) {
     await page.locator('.next-project').click();
     assert.ok(await page.getByRole('heading', { level: 1, name: new RegExp(title.replace('.', '\\.')) }).isVisible());
   }
@@ -52,7 +52,12 @@ try {
   await page.getByRole('link', { name: 'Selected work' }).click();
   assert.equal(new URL(page.url()).hash, '#work');
   checks.push('Project cycle, return link, browser back and forward work');
-  for (const path of ['', 'projects/nba-win-probability/', 'projects/reddit-clone/', 'projects/ufc-win-predictor/']) {
+  await page.goto(url('projects/reddit-clone/'));
+  await page.waitForURL(url('projects/common/'));
+  assert.equal(await page.getByRole('link', { name: 'View source' }).getAttribute('href'), 'https://github.com/NgoBenny/common');
+  assert.equal(await page.getByRole('link', { name: 'Live demo' }).getAttribute('href'), 'https://common-ngobenny.vercel.app');
+  checks.push('Former project URL redirects to Common with updated repository and demo links');
+  for (const path of ['', 'projects/nba-win-probability/', 'projects/common/', 'projects/ufc-win-predictor/']) {
     await page.goto(url(path));
     for (const width of [320, 360, 390, 760, 761, 768, 1024, 1440, 1920]) {
       await page.setViewportSize({ width, height: 844 });
