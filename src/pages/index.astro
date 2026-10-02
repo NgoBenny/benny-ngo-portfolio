@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import Arrow from '../components/Arrow.astro';
+import { profile } from '../data/profile';
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+const base = import.meta.env.BASE_URL;
+---
+<Layout>
+  <section class="hero container" aria-labelledby="hero-title">
+    <div class="hero-top mono"><span><span class="status-dot"></span> OPEN TO INTERNSHIPS</span><span>SANTA CLARA, CA · GEORGIA TECH</span></div>
+    <div class="hero-main">
+      <div><p class="hero-intro">Hi, I’m Benny.</p><h1 id="hero-title">Building useful<br class="desktop-break" /> software, <span class="soft">from<br class="desktop-break" /> data to interface.</span></h1></div>
+      <div class="hero-aside"><span class="aside-mark" aria-hidden="true">↳</span><p>{profile.introduction}</p><div class="hero-actions"><a class="button button-primary" href="#work">View work <Arrow /></a><a class="button button-secondary" href={`${base}resume.pdf`}>Resume <Arrow diagonal /></a></div></div>
+    </div>
+    <div class="hero-bottom"><span>Software engineering <span class="accent">/</span> Applied AI <span class="accent">/</span> Full-stack development</span><a href="#work" class="scroll-link mono">SCROLL TO EXPLORE <span aria-hidden="true">↓</span></a></div>
+  </section>
+  <section id="work" class="work-section container" aria-labelledby="work-title">
+    <div class="section-heading"><div><p class="eyebrow mono">01 / SELECTED WORK</p><h2 id="work-title">Ideas, made useful<span class="accent">.</span></h2></div><p>A few things I’ve built.<br/>From the pipeline to the product.</p></div>
+    <ProjectCard project={projects[0]} featured />
+    <div class="project-grid">{projects.slice(1).map(project => <ProjectCard project={project} />)}</div>
+  </section>
+  <section id="about" class="about-section container" aria-labelledby="about-title">
+    <div class="about-intro"><div><p class="eyebrow mono">02 / A LITTLE ABOUT ME</p><h2 id="about-title">Curious by nature.<br/><span class="soft">Engineer by practice.</span></h2><p class="personal-note"><span aria-hidden="true">✳</span> Eagle Scout. Teacher. Always a student.</p></div><div class="about-prose">{profile.about.map(paragraph => <p>{paragraph}</p>)}</div></div>
+    <div class="background-grid"><div><h3 class="eyebrow mono">EDUCATION</h3>{profile.education.map(item => <article class="background-item"><span class="date mono">{item.date}</span><h4>{item.institution}</h4><p>{item.qualification}</p></article>)}</div><div><h3 class="eyebrow mono">EXPERIENCE</h3>{profile.experience.map(item => <article class="background-item"><span class="date mono">{item.date}</span><h4>{item.role}</h4><p class="organization">{item.organization}</p><p>{item.description}</p></article>)}</div></div>
+  </section>
+  <section id="skills" class="skills-section container" aria-labelledby="skills-title"><div class="section-heading"><div><p class="eyebrow mono">03 / MY TOOLKIT</p><h2 id="skills-title">The tools behind the work<span class="accent">.</span></h2></div><p>Chosen for the problem.<br/>Learned through building.</p></div><div class="skills-grid">{profile.skills.map((group, index) => <article><span class="skill-number mono">0{index + 1}</span><h3>{group.title}</h3><ul>{group.items.map(item => <li>{item}</li>)}</ul></article>)}</div></section>
+  <section id="contact" class="contact-section container" aria-labelledby="contact-title"><div><p class="eyebrow mono">04 / WHAT’S NEXT?</p><h2 id="contact-title">Let’s build<br/><span class="soft">something useful.</span></h2><p>Seeking software engineering and AI/ML internships.<br/>Have an opportunity or an interesting problem? I’d love to hear it.</p><a class="contact-email" href={`mailto:${profile.email}`}>{profile.email} <Arrow diagonal /></a></div><div class="contact-links"><a href={profile.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn <Arrow diagonal /></a><a href={profile.github} target="_blank" rel="noopener noreferrer">GitHub <Arrow diagonal /></a><a href={`${base}resume.pdf`}>View resume <Arrow diagonal /></a></div></section>
+</Layout>

@@ -1,0 +1,20 @@
+---
+interface Props { steps: { title: string; detail: string }[]; }
+const { steps } = Astro.props;
+const width = 1020;
+const gap = 20;
+const cardWidth = (width - gap * (steps.length - 1)) / steps.length;
+---
+<figure class="architecture">
+  <figcaption class="mono">SYSTEM AT A GLANCE</figcaption>
+  <svg viewBox={`0 0 ${width} 118`} role="img" aria-label={steps.map(step => `${step.title}: ${step.detail}`).join(' → ')}>
+    {steps.map((step, index) => <g>
+      <rect x={index * (cardWidth + gap)} y="8" width={cardWidth} height="96" rx="6" fill="var(--surface)" stroke="var(--border)" />
+      <text x={index * (cardWidth + gap) + 16} y="36" fill="var(--accent)" font-size="12" font-family="monospace">{String(index + 1).padStart(2, '0')}</text>
+      <text x={index * (cardWidth + gap) + 16} y="61" fill="var(--ink)" font-size="15" font-family="Manrope, sans-serif" font-weight="600">{step.title}</text>
+      <text x={index * (cardWidth + gap) + 16} y="83" fill="var(--muted)" font-size="11" font-family="Manrope, sans-serif">{step.detail}</text>
+      {index < steps.length - 1 && <path d={`M${(index + 1) * cardWidth + index * gap + 4} 55h12m-5-4 5 4-5 4`} fill="none" stroke="var(--accent)" stroke-width="1.5" />}
+    </g>)}
+  </svg>
+  <ol class="architecture-mobile">{steps.map(step => <li><strong>{step.title}</strong><span>{step.detail}</span></li>)}</ol>
+</figure>
