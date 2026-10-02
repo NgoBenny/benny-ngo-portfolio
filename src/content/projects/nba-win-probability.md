@@ -6,8 +6,8 @@ order: 1
 category: Real-time systems / Machine learning
 period: June 2026 — Present
 technologies: [Python, Flask, WebSockets, scikit-learn, SQLite]
-thumbnail: ../../assets/nba.jpg
-thumbnailAlt: NBA dashboard showing a replay, two teams’ scores, win probabilities, and a probability trace.
+thumbnail: ../../assets/nba.png
+thumbnailAlt: NBA dashboard in its cobalt and ice-blue theme, showing a historical replay, team scores, win probabilities, and a probability trace.
 caption: An application screenshot in historical replay mode. The displayed game state illustrates the interface; benchmark results come from the separate frozen evaluation.
 sourceVisibility: private
 highlights:

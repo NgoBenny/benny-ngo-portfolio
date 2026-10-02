@@ -7,7 +7,7 @@ category: Full-stack development
 period: Personal software project
 technologies: [Next.js, TypeScript, PostgreSQL, Prisma, Tailwind CSS]
 thumbnail: ../../assets/common.png
-thumbnailAlt: Common’s public search results showing its teal identity, desktop community navigation, feed filters, and a rich-text test post.
+thumbnailAlt: Common’s public search results showing its indigo and lavender identity, desktop community navigation, feed filters, and a rich-text test post.
 caption: A current capture of Common’s public interface, filtered to a real rich-text test post. The screen shows desktop navigation, search, voting, and saved-post controls.
 sourceVisibility: public
 repositoryUrl: https://github.com/NgoBenny/common
@@ -60,7 +60,7 @@ These details also matter for navigation and empty states. Invalid pagination fa
 
 ### Make the same workflows usable across devices
 
-The redesign gives Common warm neutral surfaces, restrained teal accents, and light and dark themes. Desktop browsing uses a navigation rail and a contextual community panel. On smaller screens, navigation moves to a bottom bar exposing the joined feed, Explore, Post, Saved, and Notifications; search gets its own header row where space is limited.
+The redesign gives Common cream surfaces, indigo and lavender accents, and light and dark themes. Desktop browsing uses a navigation rail and a contextual community panel. On smaller screens, navigation moves to a bottom bar exposing the joined feed, Explore, Post, Saved, and Notifications; search gets its own header row where space is limited.
 
 A shared composer handles creation and editing, with title, rich text, attachment preview, and community flair. Failed submissions preserve the draft, and an upload in progress disables submission. Kinde login explicitly offers sign-in choices, while the account menu exposes Switch account without discarding normal session persistence. These changes make existing functionality easier to reach while retaining the server-side authorization boundary.
 

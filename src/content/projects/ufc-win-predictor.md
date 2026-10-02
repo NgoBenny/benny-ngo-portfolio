@@ -7,7 +7,7 @@ category: Applied machine learning
 period: July 2026 — Present
 technologies: [Python, Flask, scikit-learn, XGBoost, Docker]
 thumbnail: ../../assets/ufc.png
-thumbnailAlt: UFC prediction dashboard with event selection, fighter search, matchup controls, and a fight-card section.
+thumbnailAlt: UFC prediction dashboard in its bone and burgundy theme, with event selection, fighter search, matchup controls, and a loaded fight card.
 caption: An application screenshot showing the event and fighter-analysis interface. Displayed forecasts are research outputs; they are not evidence of future predictive performance.
 sourceVisibility: private
 highlights:
