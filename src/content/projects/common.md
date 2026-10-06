@@ -1,7 +1,7 @@
 ---
 title: Common
 subtitle: community / full-stack application
-summary: A community discussion app built to make discovery, posting, and conversation easier across devices. I evolved the project into Common with a responsive interface, shared post composer, and persistent community interactions backed by server-side permissions.
+summary: A full-stack community discussion app with responsive feeds, rich-text posts, and readable threaded replies. Server-side permissions, scoped participation restrictions, and reversible community removal connect moderation controls to persistent data.
 order: 2
 category: Full-stack development
 period: Personal software project
@@ -44,7 +44,7 @@ My project work includes extending user interactions, improving reliability, and
 
 Showing an edit button only to an author is useful interface behavior, but it is not an authorization boundary. Requests can bypass the visible controls. Server actions validate the input and check the authenticated user against the record being changed.
 
-Community description updates filter by both the community and its creator. Post and comment controls apply their own ownership and moderation checks. The resulting permissions live alongside the write operation, so the interface is not the only thing standing between a user and someone else’s content.
+Server actions enforce ownership and moderation permissions alongside writes. Community creators can apply community-scoped bans; the site moderator can apply site-wide restrictions and remove or restore communities. Restrictions are checked from the database at request time, including expiry, while transaction locks coordinate restrictions and removal with participation writes. Removal hides existing content without deleting it. Restricted users retain permitted activities such as reading and erasing their own content.
 
 ### Make voting consistent
 
@@ -58,11 +58,19 @@ Posting and commenting are small workflows with a real cost of failure: losing t
 
 These details also matter for navigation and empty states. Invalid pagination falls back safely, missing communities receive a proper not-found page, and mobile layouts keep posts and controls within the viewport.
 
+Before post creation or editing, the composer normalizes editor JSON into plain objects accepted by React server actions. This addresses ProseMirror’s null-prototype attributes; server-side validation remains authoritative.
+
 ### Make the same workflows usable across devices
 
 The redesign gives Common cream surfaces, indigo and lavender accents, and light and dark themes. Desktop browsing uses a navigation rail and a contextual community panel. On smaller screens, navigation moves to a bottom bar exposing the joined feed, Explore, Post, Saved, and Notifications; search gets its own header row where space is limited.
 
 A shared composer handles creation and editing, with title, rich text, attachment preview, and community flair. Failed submissions preserve the draft, and an upload in progress disables submission. Kinde login explicitly offers sign-in choices, while the account menu exposes Switch account without discarding normal session persistence. These changes make existing functionality easier to reach while retaining the server-side authorization boundary.
+
+Threaded comments limit visual indentation, wrap long content, and place action menus beside reply controls. Inline reply composers preserve cancelled drafts and return keyboard focus to Reply. Targeted browser checks cover deep nesting, keyboard collapse, focus, draft retention, and mobile overflow.
+
+### Bound vulnerable tooling
+
+The project applies checksum-verified nesting-depth guards to the `braces` dependency used by build and lint tooling. Installation and prebuild checks verify the patch, and bounded attack tests exercise it. The audit exception covers only the documented advisory and expires October 17, 2026 UTC; raw npm audit still reports the upstream vulnerability.
 
 ## Demonstrated functionality
 
@@ -77,5 +85,7 @@ There are no supported adoption figures or benchmark claims attached to this pro
 Hosted authentication, database, and upload services remain dependencies of the running application. A successful build cannot establish that all of those services are healthy. The Common demo address currently redirects to the existing production address, which displays the redesigned Common interface. Repository release notes include migration and domain-cutover steps, so this case study distinguishes implemented code from an assertion that every production workflow has been independently verified.
 
 Notifications refresh on navigation or reload rather than push delivery. Search uses PostgreSQL ILIKE, and post pages load the reply tree; indexed search and thread pagination would become useful as measured volume grows. There are no adoption or scalability benchmarks supporting a stronger claim.
+
+The moderation release requires an additive database migration and backup verification. Repository implementation and regression coverage do not independently establish that the production migration and every restricted-user workflow have been verified.
 
 The lesson is to follow a user action all the way through validation, permissions, persistence, and feedback. Keeping a draft after an error or reconciling a vote after a reload is just as much engineering as rendering the initial page.
