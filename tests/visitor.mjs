@@ -28,7 +28,7 @@ try {
     assert.equal(await page.locator('.mobile-menu').getAttribute('open'), null);
   }
   await page.getByRole('button', { name: 'Open navigation' }).click();
-  await page.getByRole('heading', { name: 'Let’s build' }).click();
+  await page.getByRole('heading', { name: 'Get in touch.' }).click();
   assert.equal(await page.locator('.mobile-menu').getAttribute('open'), null);
   await page.getByRole('button', { name: 'Open navigation' }).click();
   await page.setViewportSize({ width: 1440, height: 1000 });

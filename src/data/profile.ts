@@ -3,13 +3,13 @@ export const profile = {
   email: 'bkvngo@gmail.com',
   location: 'Santa Clara, California',
   headline: 'Building useful software, from data to interface.',
-  introduction: 'Computer science master’s student at Georgia Tech focused on software engineering and applied AI. I build real-time applications, machine learning pipelines, and full-stack products.',
+  introduction: 'I’m a computer science master’s student at Georgia Tech studying AI. My projects include live sports dashboards, machine learning pipelines, and full-stack web apps.',
   availability: 'Seeking software engineering & AI/ML internships',
   github: 'https://github.com/NgoBenny',
   linkedin: 'https://www.linkedin.com/in/benny-ngo01/',
   about: [
-    'I like the whole journey: turning a question into a model, connecting that model to an application, and making the result useful to someone. Sports analytics is one place I explore that intersection—through live NBA probabilities and pre-fight UFC predictions.',
-    'I earned my computer science degree at San José State and am now pursuing a master’s at Georgia Tech, specializing in artificial intelligence. Teaching Python and tutoring computer science taught me to make complicated ideas easier to understand. I bring that same care to the software I build.',
+    'I like working on both the model and the app around it. My NBA project follows win probabilities as a game unfolds; my UFC project estimates them before a fight. Both give me a way to work with sports data and build an interface people can explore.',
+    'I earned my computer science degree at San José State and now study artificial intelligence at Georgia Tech. I’ve also taught Python and tutored computer science. Explaining code to students has helped me write clearer explanations in my own projects.',
   ],
   education: [
     { institution: 'Georgia Institute of Technology', qualification: 'M.S. Computer Science · Artificial Intelligence', date: 'Expected May 2028' },
