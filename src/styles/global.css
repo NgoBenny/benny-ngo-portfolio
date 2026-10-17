@@ -92,6 +92,7 @@ h2 { font-size: clamp(29px, 3vw, 40px); line-height: 1.2; letter-spacing: -.045e
 .project-stats strong { font-size: 21px; font-weight: 500; letter-spacing: -.04em; }
 .project-stats span { font-family: ui-monospace, monospace; font-size: 8px; color: var(--muted); }
 .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; margin-top: 40px; }
+.project-grid > .project-featured { grid-column: 1 / -1; }
 .about-section { border-top: 1px solid var(--border); padding-block: 80px 92px; }
 .about-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; }
 .about-portrait { float: right; width: 160px; height: 200px; object-fit: cover; border: 1px solid var(--border); border-radius: 8px; margin: 0 0 16px 24px; }

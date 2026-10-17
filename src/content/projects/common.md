@@ -68,9 +68,11 @@ A shared composer handles creation and editing, with title, rich text, attachmen
 
 Threaded comments limit visual indentation, wrap long content, and place action menus beside reply controls. Inline reply composers preserve cancelled drafts and return keyboard focus to Reply. Targeted browser checks cover deep nesting, keyboard collapse, focus, draft retention, and mobile overflow.
 
+Post pages give the body more reading space and place actions below the content. Top-level comments now start with a compact “Join the conversation” control. Cancelling keeps the draft, and cancelling or successfully posting returns focus to the opening control.
+
 ### Bound vulnerable tooling
 
-The project applies checksum-verified nesting-depth guards to the `braces` dependency used by build and lint tooling. Installation and prebuild checks verify the patch, and bounded attack tests exercise it. The audit exception covers only the documented advisory and expires October 17, 2026 UTC; raw npm audit still reports the upstream vulnerability.
+I added checksum-verified nesting-depth guards to the `braces` dependency used by build and lint tools, with installation checks and bounded attack tests. The exception was time limited and expired October 17, 2026 UTC. It needs a fresh security review or an upstream fix before it can be treated as a current dependency-security approval. The patch does not resolve the upstream advisory reported by npm audit.
 
 ## Demonstrated functionality
 

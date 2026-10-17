@@ -7,7 +7,7 @@ import AxeBuilder from '@axe-core/playwright';
 const base = process.env.PORTFOLIO_URL || 'http://127.0.0.1:4321';
 const origin = new URL(base);
 assert.ok(['127.0.0.1', 'localhost'].includes(origin.hostname), 'Smoke checks only target the local portfolio.');
-const routes = ['projects/nba-win-probability/', 'projects/common/', 'projects/ufc-win-predictor/'];
+const routes = ['projects/nba-win-probability/', 'projects/common/', 'projects/ufc-win-predictor/', 'projects/job-application-copilot/'];
 const output = 'output/verification';
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: process.env.PLAYWRIGHT_CHANNEL || (process.platform === 'win32' ? 'msedge' : undefined) });
@@ -39,7 +39,7 @@ try {
   await page.evaluate(() => document.fonts.ready);
   await page.getByRole('heading', { level: 1 }).waitFor();
   assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
-  assert.equal(await page.locator('.project-card').count(), 3);
+  assert.equal(await page.locator('.project-card').count(), 4);
   assert.equal(await page.locator('form').count(), 0);
   await noOverflow(page);
   await audit(page, 'desktop light');
@@ -70,9 +70,14 @@ try {
     await page.getByRole('heading', { level: 1 }).waitFor();
     await noOverflow(page);
     await audit(page, route);
-    if (!route.includes('common')) {
+    if (route.includes('nba-win-probability') || route.includes('ufc-win-predictor')) {
       assert.ok(await page.getByText('Source private', { exact: true }).count());
       assert.equal(await page.getByRole('link', { name: 'View source' }).count(), 0);
+    }
+    if (route.includes('job-application-copilot')) {
+      assert.equal(await page.getByRole('link', { name: 'View source' }).getAttribute('href'), 'https://github.com/NgoBenny/job-application-copilot-public');
+      assert.equal(await page.getByRole('link', { name: 'Live demo' }).count(), 0);
+      assert.ok(await page.getByText('“Verified” means the page shows the expected value', { exact: false }).count());
     }
     for (const width of [360, 390, 768]) {
       await page.setViewportSize({ width, height: 844 });
@@ -133,7 +138,7 @@ try {
   const noJS = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 }, colorScheme: 'light' });
   const plain = await noJS.newPage();
   await plain.goto(base);
-  assert.equal(await plain.locator('.project-card').count(), 3);
+  assert.equal(await plain.locator('.project-card').count(), 4);
   await plain.getByRole('button', { name: 'Open navigation' }).click();
   assert.ok(await plain.getByRole('navigation', { name: 'Mobile navigation' }).isVisible());
   await noOverflow(plain);

@@ -1,6 +1,6 @@
 # Benny Ngo — portfolio
 
-Static Astro, TypeScript and CSS portfolio with three project case studies, system-aware light/dark themes, accessible mobile navigation and an unchanged resume PDF. No backend, form or live ML service is required.
+Static Astro, TypeScript and CSS portfolio with four project case studies, system-aware light/dark themes, accessible mobile navigation and an unchanged resume PDF. No backend, form or live ML service is required.
 
 Live site: https://benny-ngo-portfolio.vercel.app/ · Source: https://github.com/NgoBenny/benny-ngo-portfolio
 
@@ -24,6 +24,8 @@ The dev server uses port 4321. The preview serves the production `dist/` build. 
 - `src/assets/`: reviewed project screenshots, optimized by Astro at build time.
 - `src/styles/global.css`: shared design tokens and responsive layouts.
 - `public/resume.pdf`: replace with the canonical PDF without changing its contents.
+
+The Copilot dashboard image comes from [the public repository’s fabricated-data screenshots](https://github.com/NgoBenny/job-application-copilot-public/tree/f42b294d182032f9830c7766d39cc5341d72746e/docs/screenshots). It contains no real application data.
 
 Private projects use `sourceVisibility: private` and cannot include `repositoryUrl`. A public demo is optional; add `demoUrl` only after checking it works without access to private accounts. Source ownership does not imply sole authorship. Keep quantitative results paired with model version and evaluation context. School source, private research and raw data do not belong in this repository or its assets.
 

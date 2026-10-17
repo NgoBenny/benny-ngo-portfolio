@@ -42,12 +42,12 @@ try {
   assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
   checks.push('Rapid theme toggles and corrupt saved preference remain usable');
   await page.getByRole('link', { name: 'Live NBA Win Probability' }).click();
-  for (const title of ['Common', 'UFC Win Predictor', 'Live NBA Win Probability']) {
+  for (const title of ['Common', 'UFC Win Predictor', 'Job Application Copilot', 'Live NBA Win Probability']) {
     await page.locator('.next-project').click();
     assert.ok(await page.getByRole('heading', { level: 1, name: new RegExp(title.replace('.', '\\.')) }).isVisible());
   }
   await page.goBack();
-  assert.ok(page.url().includes('ufc-win-predictor'));
+  assert.ok(page.url().includes('job-application-copilot'));
   await page.goForward();
   await page.getByRole('link', { name: 'Selected work' }).click();
   assert.equal(new URL(page.url()).hash, '#work');
@@ -57,7 +57,7 @@ try {
   assert.equal(await page.getByRole('link', { name: 'View source' }).getAttribute('href'), 'https://github.com/NgoBenny/common');
   assert.equal(await page.getByRole('link', { name: 'Live demo' }).getAttribute('href'), 'https://common-ngobenny.vercel.app');
   checks.push('Former project URL redirects to Common with updated repository and demo links');
-  for (const path of ['', 'projects/nba-win-probability/', 'projects/common/', 'projects/ufc-win-predictor/']) {
+  for (const path of ['', 'projects/nba-win-probability/', 'projects/common/', 'projects/ufc-win-predictor/', 'projects/job-application-copilot/']) {
     await page.goto(url(path));
     for (const width of [320, 360, 390, 760, 761, 768, 1024, 1440, 1920]) {
       await page.setViewportSize({ width, height: 844 });
@@ -68,7 +68,7 @@ try {
       assert.ok(await page.locator(hash).count(), `Missing case section: ${hash}`);
     }
   }
-  checks.push('Four routes fit nine widths, including the mobile breakpoint; case anchors exist');
+  checks.push('Five routes fit nine widths, including the mobile breakpoint; case anchors exist');
   await page.goto(url('?q=%3Cscript%3Ealert(1)%3C%2Fscript%3E#unknown-section'));
   assert.equal(await page.locator('h1').count(), 1);
   assert.ok(!(await page.content()).includes('<script>alert(1)</script>'));
