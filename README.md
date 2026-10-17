@@ -1,8 +1,16 @@
-# Benny Ngo — portfolio
+# Benny Ngo: portfolio
 
-Static Astro, TypeScript and CSS portfolio with four project case studies, system-aware light/dark themes, accessible mobile navigation and an unchanged resume PDF. No backend, form or live ML service is required.
+A personal portfolio built with Astro, TypeScript, and plain CSS. Four project case studies sit in a two-column desktop grid and stack on mobile. The site generates static HTML and serves the supplied resume PDF without a backend, contact form, or running ML service.
 
 Live site: https://benny-ngo-portfolio.vercel.app/ · Source: https://github.com/NgoBenny/benny-ngo-portfolio
+
+## How it works
+
+Markdown case studies pass through an Astro content collection with a typed schema, then generate project pages, navigation, and homepage cards. Shared components handle project previews, architecture diagrams, and the page layout. Astro optimizes screenshots at build time.
+
+The site follows the system theme until a visitor chooses one. The choice is remembered when storage is available; theme switching still works when it is blocked. Native links and the mobile disclosure keep the content usable without JavaScript.
+
+The case studies cover Common, Live NBA Win Probability, UFC Win Predictor, and Job Application Copilot. Their summaries distinguish public source, private source, archived model results, and provisional candidates. A portfolio page is not a live deployment or independent validation of the application it describes.
 
 ## Local commands
 
@@ -33,7 +41,11 @@ Private projects use `sourceVisibility: private` and cannot include `repositoryU
 
 Build and start the preview first, then run `npm test` in another terminal. The smoke suite uses Node assertions, Playwright and axe. It tests responsive overflow, keyboard navigation, mobile disclosure, themes, blocked storage, reduced motion, JavaScript-disabled content, links/routes and private-source rules. It saves desktop/mobile/light/dark screenshots under ignored `output/verification/`.
 
+The smoke suite also checks the four-card desktop grid, single-column mobile layout, and Copilot’s public repository link without a hosted-demo button. The visitor suite cycles through all four project pages and checks five routes at nine screen widths.
+
 Run `npm run test:visitor` for adversarial visitor flows and failure cases. This suite can also target the deployed portfolio with `PORTFOLIO_URL=https://benny-ngo-portfolio.vercel.app/`. See [SECURITY_REVIEW.md](SECURITY_REVIEW.md) for the launch checklist, security scope and testing limits.
+
+These are bounded checks for a public static site. CSP, response headers, and rejected private-path probes do not establish the security of an authenticated application or database. They are not load testing, a full penetration test, or a guarantee that all accessibility issues are absent.
 
 On Windows it uses installed Microsoft Edge. Elsewhere run `npx playwright install chromium` once. `PLAYWRIGHT_CHANNEL` can select an installed supported browser. Local-only URL override: `PORTFOLIO_URL=http://127.0.0.1:4321`.
 
