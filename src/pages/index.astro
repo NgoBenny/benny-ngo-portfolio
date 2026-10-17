@@ -20,8 +20,7 @@ const base = import.meta.env.BASE_URL;
   </section>
   <section id="work" class="work-section container" aria-labelledby="work-title">
     <div class="section-heading"><div><p class="eyebrow mono">01 / SELECTED WORK</p><h2 id="work-title">Projects I’ve built<span class="accent">.</span></h2></div><p>Sports dashboards, a community app,<br/>and a browser extension.</p></div>
-    <ProjectCard project={projects[0]} featured />
-    <div class="project-grid">{projects.slice(1).map(project => <ProjectCard project={project} featured={project.id === 'job-application-copilot'} />)}</div>
+    <div class="project-grid">{projects.map(project => <ProjectCard project={project} />)}</div>
   </section>
   <section id="about" class="about-section container" aria-labelledby="about-title">
     <div class="about-intro"><div><p class="eyebrow mono">02 / A LITTLE ABOUT ME</p><h2 id="about-title">A little about<br/><span class="soft">my background.</span></h2><p class="personal-note"><span aria-hidden="true">✳</span> I’m also an Eagle Scout and have taught Python.</p></div><div class="about-prose"><Image class="about-portrait" src={portrait} alt="Benny Ngo" widths={[160, 320, 480]} sizes="160px" format="webp" quality={90} loading="lazy" />{profile.about.map(paragraph => <p>{paragraph}</p>)}</div></div>

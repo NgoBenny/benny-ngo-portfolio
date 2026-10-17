@@ -40,6 +40,17 @@ try {
   await page.getByRole('heading', { level: 1 }).waitFor();
   assert.equal(await page.locator('html').getAttribute('data-theme'), 'light');
   assert.equal(await page.locator('.project-card').count(), 4);
+  const cards = await page.locator('.project-grid > .project-card').evaluateAll(nodes => nodes.map(node => {
+    const { x, y, width } = node.getBoundingClientRect();
+    return { x, y, width };
+  }));
+  assert.equal(cards.length, 4);
+  assert.equal(cards[0].y, cards[1].y, 'First row has two cards');
+  assert.equal(cards[2].y, cards[3].y, 'Second row has two cards');
+  assert.equal(cards[0].x, cards[2].x, 'Left column aligns');
+  assert.equal(cards[1].x, cards[3].x, 'Right column aligns');
+  assert.ok(cards[2].y > cards[0].y && cards[1].x > cards[0].x);
+  assert.ok(cards.every(card => Math.abs(card.width - cards[0].width) < 1), 'Equal card widths');
   assert.equal(await page.locator('form').count(), 0);
   await noOverflow(page);
   await audit(page, 'desktop light');
@@ -97,6 +108,7 @@ try {
     await noOverflow(page);
   }
   await page.setViewportSize({ width: 390, height: 844 });
+  assert.equal(await page.locator('.project-grid').evaluate(node => getComputedStyle(node).gridTemplateColumns.split(' ').length), 1, 'Mobile uses one column');
   await page.getByRole('button', { name: 'Open navigation' }).click();
   assert.equal(await page.locator('.mobile-menu').getAttribute('open'), '');
   await page.keyboard.press('Escape');
